@@ -30,7 +30,43 @@ namespace MisterFlow
 			Window.Title = "Mr. Flow";
 			Window.AllowUserResizing = true;
 			Window.ClientSizeChanged += OnClientSizeChanged;
+
+			_renderTarget = new RenderTarget2D(GraphicsDevice, _nativeWidth, _nativeHeight);
 		}
+
+		protected override void Initialize()
+		{			
+			base.Initialize();
+
+			CalculateRenderDestination();
+		}
+
+		protected override void LoadContent()
+		{
+			_spriteBatch = new SpriteBatch(GraphicsDevice);
+
+			// TODO: use this.Content to load your game content here
+		}
+
+		protected override void Update(GameTime gameTime)
+		{
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+				Exit();
+
+			// TODO: Add your update logic here
+
+			base.Update(gameTime);
+		}
+
+		protected override void Draw(GameTime gameTime)
+		{
+			GraphicsDevice.Clear(Color.CornflowerBlue);
+
+			// TODO: Add your drawing code here
+
+			base.Draw(gameTime);
+		}
+
 		private void OnClientSizeChanged(object sender, EventArgs e)
 		{
 			if (!_isResizing && Window.ClientBounds.Width > 0 && Window.ClientBounds.Height > 0)
@@ -59,37 +95,77 @@ namespace MisterFlow
 			_renderDestination.Y = (size.Y - _renderDestination.Height) / 2;
 		}
 
-		protected override void Initialize()
+		// Learn MonoGame how-to Fullscreen and Borderless code
+		public void ToggleFullscreen()
 		{
-			// TODO: Add your initialization logic here
+			bool oldIsFullscreen = _isFullscreen;
 
-			base.Initialize();
+			if (_isBorderless)
+			{
+				_isBorderless = false;
+			}
+			else
+			{
+				_isFullscreen = !_isFullscreen;
+			}
+
+			ApplyFullscreenChange(oldIsFullscreen);
+		}
+		public void ToggleBorderless()
+		{
+			bool oldIsFullscreen = _isFullscreen;
+
+			_isBorderless = !_isBorderless;
+			_isFullscreen = _isBorderless;
+
+			ApplyFullscreenChange(oldIsFullscreen);
 		}
 
-		protected override void LoadContent()
+		private void ApplyFullscreenChange(bool oldIsFullscreen)
 		{
-			_spriteBatch = new SpriteBatch(GraphicsDevice);
-
-			// TODO: use this.Content to load your game content here
+			if (_isFullscreen)
+			{
+				if (oldIsFullscreen)
+				{
+					ApplyHardwareMode();
+				}
+				else
+				{
+					SetFullscreen();
+				}
+			}
+			else
+			{
+				UnsetFullscreen();
+			}
 		}
-
-		protected override void Update(GameTime gameTime)
+		private void ApplyHardwareMode()
 		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-				Exit();
-
-			// TODO: Add your update logic here
-
-			base.Update(gameTime);
+			_graphics.HardwareModeSwitch = !_isBorderless;
+			_graphics.ApplyChanges();
 		}
-
-		protected override void Draw(GameTime gameTime)
+		private void SetFullscreen()
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+			_width = Window.ClientBounds.Width;
+			_height = Window.ClientBounds.Height;
 
-			// TODO: Add your drawing code here
+			_graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+			_graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			// _graphics.HardwareModeSwitch = !_isBorderless;
+			_graphics.HardwareModeSwitch = false;
 
-			base.Draw(gameTime);
+			_graphics.IsFullScreen = true;
+			_graphics.ApplyChanges();
+		}
+		private void UnsetFullscreen()
+		{
+			// Reset to default resolution, but we do have the previous Width and Height just tweaky if somebody resized
+			_graphics.PreferredBackBufferWidth = _nativeWidth;
+			_graphics.PreferredBackBufferHeight = _nativeHeight;
+
+			_graphics.HardwareModeSwitch = false;
+			_graphics.IsFullScreen = false;
+			_graphics.ApplyChanges();
 		}
 	}
 }
