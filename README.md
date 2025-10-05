@@ -10,3 +10,7 @@ Rotate pipes to connect the start and end using Octagon shapes with left and rig
 - Retro-style graphics
 - Sound effects and background music
 - Basic Fluid simulation and physics requirements for flow direction
+
+## Controls
+- Use mouse specifically to rotate pipes
+- Maybe add gamepad support?
