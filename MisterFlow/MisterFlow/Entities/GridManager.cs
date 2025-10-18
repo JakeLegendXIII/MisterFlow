@@ -19,12 +19,18 @@ internal class GridManager : IGameEntity
 
 	public void Draw(SpriteBatch spriteBatch)
 	{
-		
+		foreach(var square in _gridSquares)
+		{
+			square.Draw(spriteBatch);
+		}
 	}
 
 	public void Update(GameTime gameTime)
 	{
-		
+		foreach(var square in _gridSquares)
+		{
+			square.Update(gameTime);
+		}
 	}
 
 
