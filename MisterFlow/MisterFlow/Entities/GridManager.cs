@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MisterFlow.Entities;
 
@@ -9,9 +10,11 @@ internal class GridManager : IGameEntity
 	private int _gridHeight = 8;
 	private int _cellSize = 64;
 
+	private List<GridSquare> _gridSquares = new List<GridSquare>();
+
 	public GridManager()
 	{
-
+		InitializeGrid();
 	}
 
 	public void Draw(SpriteBatch spriteBatch)
@@ -34,9 +37,8 @@ internal class GridManager : IGameEntity
 				Vector2 position = new Vector2(x * _cellSize, y * _cellSize);
 				Point gridPosition = new Point(x, y);
 
-				//GridSquare gridSquare = new GridSquare(GetObstacleData(x, y), position, _cellSize, gridPosition,
-				//	IsWalkablePoint(x, y), IsWater(x, y), IsWinPosition(x, y), IsDestructable(x, y));
-				//_gridSquares.Add(gridSquare);
+				GridSquare gridSquare = new GridSquare(position, gridPosition);
+				_gridSquares.Add(gridSquare);
 			}
 		}
 	}
