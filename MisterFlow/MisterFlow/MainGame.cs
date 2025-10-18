@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MisterFlow.Entities;
+using MisterFlow.Library;
 using System;
 
 namespace MisterFlow
@@ -20,6 +22,8 @@ namespace MisterFlow
 		bool _isBorderless = false;
 		int _width = 0;
 		int _height = 0;
+
+		private GridManager _gridManager;
 
 		public MainGame()
 		{
@@ -43,13 +47,15 @@ namespace MisterFlow
 			_renderTarget = new RenderTarget2D(GraphicsDevice, _nativeWidth, _nativeHeight);
 
 			CalculateRenderDestination();
+
+			_gridManager = new GridManager();
 		}
 
 		protected override void LoadContent()
 		{
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
-
-			// TODO: use this.Content to load your game content here
+			
+			AssetManager.Load(Content);
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -57,7 +63,7 @@ namespace MisterFlow
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
-			// TODO: Add your update logic here
+			_gridManager.Update(gameTime);
 
 			base.Update(gameTime);
 		}
@@ -72,6 +78,8 @@ namespace MisterFlow
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+
+			_gridManager.Draw(_spriteBatch);
 			
 			_spriteBatch.End();
 
