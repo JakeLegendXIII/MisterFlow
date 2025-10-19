@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MisterFlow.Data;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +16,7 @@ internal class GridManager : IGameEntity
 
 	private Random _random;
 
-	public GridManager()
+	public GridManager(Level level)
 	{
 		_random = new Random();
 

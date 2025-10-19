@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MisterFlow.Data;
 using MisterFlow.Entities;
 using MisterFlow.Input;
 using MisterFlow.Library;
@@ -57,7 +58,9 @@ namespace MisterFlow
 
 			AssetManager.Load(Content);
 
-			_gridManager = new GridManager();
+			Level level = CreateLevel();
+
+			_gridManager = new GridManager(level);
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -94,6 +97,11 @@ namespace MisterFlow
 			_spriteBatch.End();
 
 			base.Draw(gameTime);
+		}
+
+		private Level CreateLevel()
+		{
+			
 		}
 
 		private void OnClientSizeChanged(object sender, EventArgs e)
