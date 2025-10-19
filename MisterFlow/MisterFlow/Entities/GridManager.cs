@@ -6,8 +6,8 @@ namespace MisterFlow.Entities;
 
 internal class GridManager : IGameEntity
 {
-	private int _gridWidth = 8;
-	private int _gridHeight = 8;
+	private int _gridWidth = 4;
+	private int _gridHeight = 4;
 	private int _cellSize = 64;
 
 	private List<GridSquare> _gridSquares = new List<GridSquare>();
@@ -43,7 +43,10 @@ internal class GridManager : IGameEntity
 				Vector2 position = new Vector2(x * _cellSize, y * _cellSize);
 				Point gridPosition = new Point(x, y);
 
-				GridSquare gridSquare = new GridSquare(position, gridPosition);
+				// TODO : Need to use Level Data to determine Drawbox eventually
+				Rectangle drawBox = new Rectangle(0, 0, _cellSize, _cellSize);
+
+				GridSquare gridSquare = new GridSquare(position, gridPosition, drawBox);
 				_gridSquares.Add(gridSquare);
 			}
 		}

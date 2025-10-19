@@ -37,25 +37,26 @@ namespace MisterFlow
 
 			Window.Title = "Mr. Flow";
 			Window.AllowUserResizing = true;
-			Window.ClientSizeChanged += OnClientSizeChanged;			
+			Window.ClientSizeChanged += OnClientSizeChanged;
 		}
 
 		protected override void Initialize()
-		{			
+		{
 			base.Initialize();
 
 			_renderTarget = new RenderTarget2D(GraphicsDevice, _nativeWidth, _nativeHeight);
 
-			CalculateRenderDestination();
-
-			_gridManager = new GridManager();
+			CalculateRenderDestination();		
+			
 		}
 
 		protected override void LoadContent()
 		{
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
-			
+
 			AssetManager.Load(Content);
+
+			_gridManager = new GridManager();
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -80,7 +81,7 @@ namespace MisterFlow
 			_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
 			_gridManager.Draw(_spriteBatch);
-			
+
 			_spriteBatch.End();
 
 			GraphicsDevice.SetRenderTarget(null);
@@ -88,8 +89,6 @@ namespace MisterFlow
 			_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 			_spriteBatch.Draw(_renderTarget, _renderDestination, Color.White);
 			_spriteBatch.End();
-
-			base.Draw(gameTime);
 
 			base.Draw(gameTime);
 		}
