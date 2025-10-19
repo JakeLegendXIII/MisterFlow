@@ -44,11 +44,17 @@ internal class GridManager : IGameEntity
 				Point gridPosition = new Point(x, y);
 
 				// TODO : Need to use Level Data to determine Drawbox eventually
-				Rectangle drawBox = new Rectangle(0, 0, _cellSize, _cellSize);
+				Rectangle drawBox = CalculateDrawBox();
+				// Rectangle drawBox = new Rectangle(0, 0, _cellSize, _cellSize);
 
 				GridSquare gridSquare = new GridSquare(position, gridPosition, drawBox);
 				_gridSquares.Add(gridSquare);
 			}
 		}
+	}
+
+	private Rectangle CalculateDrawBox()
+	{
+		return new Rectangle(0, 0, _cellSize, _cellSize);
 	}
 }
