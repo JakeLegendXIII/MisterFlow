@@ -52,7 +52,8 @@ internal class GridManager : IGameEntity
 				Rectangle drawBox = CalculateDrawBox(gridPosition);
 				// Rectangle drawBox = new Rectangle(0, 0, _cellSize, _cellSize);
 
-				GridSquare gridSquare = new GridSquare(position, gridPosition, drawBox);
+				GridSquare gridSquare = new GridSquare(position, gridPosition, drawBox, 
+					IsStart(gridPosition), IsEnd(gridPosition));
 				_gridSquares.Add(gridSquare);
 			}
 		}
@@ -88,5 +89,25 @@ internal class GridManager : IGameEntity
 				return new Rectangle(_cellSize * 3, 0, _cellSize, _cellSize);
 			}
 		}
+	}
+
+	private bool IsEnd(Point gridPosition)
+	{
+		if (gridPosition.X == _gridWidth - 1 && gridPosition.Y == _gridHeight - 1)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	private bool IsStart(Point gridPosition)
+	{
+		if (gridPosition.X == 0 && gridPosition.Y == 0)
+		{
+			return true;
+		}
+
+		return false;
 	}
 }
