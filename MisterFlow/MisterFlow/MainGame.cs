@@ -101,7 +101,7 @@ namespace MisterFlow
 
 		private Level CreateLevel()
 		{
-			
+			return new Level(64, 64, 4);
 		}
 
 		private void OnClientSizeChanged(object sender, EventArgs e)

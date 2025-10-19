@@ -19,7 +19,7 @@ internal class GridSquare : IGameEntity
 	private float _rotation; // Rotation in radians
 	private Vector2 _origin; // Origin point for rotation
 
-	public GridSquare(Vector2 position, Point gridPosition, Rectangle drawBox, bool isStart, bool isEnd)
+	public GridSquare(Vector2 position, Point gridPosition, Rectangle drawBox, float rotation, bool isStart, bool isEnd)
 	{
 		_position = position;
 		_positionRectangle = new Rectangle((int)position.X, (int)position.Y, drawBox.Width, drawBox.Height);
@@ -29,7 +29,7 @@ internal class GridSquare : IGameEntity
 		_texture = AssetManager.Octagons;
 		_isStart = isStart;
 		_isEnd = isEnd;
-		_rotation = 0f;
+		_rotation = rotation;
 		// Set origin to center of the sprite for rotation
 		_origin = new Vector2(drawBox.Width / 2f, drawBox.Height / 2f);
 	}
