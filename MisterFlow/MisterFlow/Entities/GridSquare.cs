@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MisterFlow.Graphics;
+using MisterFlow.Input;
 using MisterFlow.Library;
 
 namespace MisterFlow.Entities;
@@ -27,6 +29,14 @@ internal class GridSquare : IGameEntity
 
 	public void Draw(SpriteBatch spriteBatch)
 	{
+		//Vector2 endTurnIconMousePosition = InputManager.GetTransformedMousePosition(_endTurnRectangle.X, _endTurnRectangle.Y);
+
+		//if (endTurnIconMousePosition.X >= 0 && endTurnIconMousePosition.X <= 128 &&
+		//		endTurnIconMousePosition.Y >= 0 && endTurnIconMousePosition.Y <= 128)
+		//{
+		//	RectangleSprite.DrawRectangle(spriteBatch, _endTurnRectangle, Color.White, 5);
+		//}
+
 		spriteBatch.Draw(_texture, _position, _drawBox, Color.White);
 	}
 
