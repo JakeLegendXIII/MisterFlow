@@ -21,5 +21,8 @@ internal class Level
 internal class TileData
 {
 	public int ImageIndex { get; init; }
-	public float Rotation { get; init; }
+	public float StartRotation { get; init; }
+	public float SolvedRotation { get; init; }
+	public bool IsStartTile { get; init; }
+	public bool IsEndTile { get; init; }
 }
