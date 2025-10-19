@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using MisterFlow.Graphics;
 using MisterFlow.Input;
 using MisterFlow.Library;
-using System;
 
 namespace MisterFlow.Entities;
 internal class GridSquare : IGameEntity
