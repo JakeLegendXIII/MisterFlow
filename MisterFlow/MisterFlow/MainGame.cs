@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MisterFlow.Entities;
+using MisterFlow.Input;
 using MisterFlow.Library;
 using System;
 
@@ -63,6 +64,8 @@ namespace MisterFlow
 		{
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
+
+			InputManager.Update(_renderDestination, _scale);
 
 			_gridManager.Update(gameTime);
 
