@@ -112,7 +112,8 @@ namespace MisterFlow
 				StartRotation = 270f,
 				SolvedRotation = 270f,
 				IsEndTile = false,
-				IsStartTile = true
+				IsStartTile = true,
+				GridPosition = new Point(0,0)
 			};
 			level.Tiles.Add(tile1);
 
@@ -122,7 +123,8 @@ namespace MisterFlow
 				StartRotation = 90f,
 				SolvedRotation = 0f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition= new Point(0,1)
 			};
 			level.Tiles.Add(tile2);
 
@@ -132,7 +134,8 @@ namespace MisterFlow
 				StartRotation = 180f,
 				SolvedRotation = 90f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(0,2)
 			};
 			level.Tiles.Add(tile3);
 
@@ -142,7 +145,8 @@ namespace MisterFlow
 				StartRotation = 270f,
 				SolvedRotation = 180f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(0,3)
 			};
 			level.Tiles.Add(tile4);
 
@@ -153,7 +157,8 @@ namespace MisterFlow
 				StartRotation = 0f,
 				SolvedRotation = 270f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(1,0)
 			};
 			level.Tiles.Add(tile5);
 
@@ -163,7 +168,8 @@ namespace MisterFlow
 				StartRotation = 90f,
 				SolvedRotation = 0f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition= new Point(1,1)
 			};
 			level.Tiles.Add(tile6);
 
@@ -173,7 +179,8 @@ namespace MisterFlow
 				StartRotation = 180f,
 				SolvedRotation = 90f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(1,2)
 			};
 			level.Tiles.Add(tile7);
 
@@ -183,7 +190,8 @@ namespace MisterFlow
 				StartRotation = 270f,
 				SolvedRotation = 180f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(1,3)
 			};
 			level.Tiles.Add(tile8);
 
@@ -194,7 +202,8 @@ namespace MisterFlow
 				StartRotation = 0f,
 				SolvedRotation = 270f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(2,0)
 			};
 			level.Tiles.Add(tile9);
 
@@ -204,7 +213,8 @@ namespace MisterFlow
 				StartRotation = 90f,
 				SolvedRotation = 0f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(2,1)
 			};
 			level.Tiles.Add(tile10);
 
@@ -214,7 +224,8 @@ namespace MisterFlow
 				StartRotation = 180f,
 				SolvedRotation = 90f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(2,2)
 			};
 			level.Tiles.Add(tile11);
 
@@ -224,7 +235,8 @@ namespace MisterFlow
 				StartRotation = 270f,
 				SolvedRotation = 180f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(2,3)
 			};
 			level.Tiles.Add(tile12);
 
@@ -235,7 +247,8 @@ namespace MisterFlow
 				StartRotation = 0f,
 				SolvedRotation = 270f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(3,0)
 			};
 			level.Tiles.Add(tile13);
 
@@ -245,7 +258,8 @@ namespace MisterFlow
 				StartRotation = 90f,
 				SolvedRotation = 0f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(3,1)
 			};
 			level.Tiles.Add(tile14);
 
@@ -255,7 +269,8 @@ namespace MisterFlow
 				StartRotation = 180f,
 				SolvedRotation = 90f,
 				IsEndTile = false,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(3,2)
 			};
 			level.Tiles.Add(tile15);
 
@@ -265,7 +280,8 @@ namespace MisterFlow
 				StartRotation = 0f,
 				SolvedRotation = 0f,
 				IsEndTile = true,
-				IsStartTile = false
+				IsStartTile = false,
+				GridPosition = new Point(3,3)
 			};
 			level.Tiles.Add(tile16);
 

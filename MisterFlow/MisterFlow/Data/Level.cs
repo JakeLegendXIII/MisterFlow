@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace MisterFlow.Data;
 
@@ -25,4 +26,5 @@ internal class TileData
 	public float SolvedRotation { get; init; }
 	public bool IsStartTile { get; init; }
 	public bool IsEndTile { get; init; }
+	public Point GridPosition { get; init; }
 }
