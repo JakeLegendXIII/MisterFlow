@@ -8,6 +8,7 @@ namespace MisterFlow.Entities;
 
 internal class GridManager : IGameEntity
 {
+	private Level _level;
 	private int _gridWidth = 4;
 	private int _gridHeight = 4;
 	private int _cellSize = 64;
@@ -18,6 +19,7 @@ internal class GridManager : IGameEntity
 
 	public GridManager(Level level)
 	{
+		_level = level;
 		_random = new Random();
 
 		InitializeGrid();
@@ -51,13 +53,26 @@ internal class GridManager : IGameEntity
 
 				// TODO : Need to use Level Data to determine Drawbox eventually
 				Rectangle drawBox = CalculateDrawBox(gridPosition);
-				float rotation = 0f;
+				float rotation = GetRotationFromLevelForPoint(gridPosition);
 
 				GridSquare gridSquare = new GridSquare(position, gridPosition, drawBox, rotation, 
 					IsStart(gridPosition), IsEnd(gridPosition));
 				_gridSquares.Add(gridSquare);
 			}
 		}
+	}
+
+	private float GetRotationFromLevelForPoint(Point gridPosition)
+	{
+		foreach(var tile in _level.Tiles)
+		{
+			if(tile.GridPosition == gridPosition)
+			{
+				return MathHelper.ToRadians(tile.StartRotation);
+			}
+		}
+
+		return 0f;
 	}
 
 	private Rectangle CalculateDrawBox(Point gridPosition)
