@@ -109,8 +109,8 @@ namespace MisterFlow
 			TileData tile1 = new TileData
 			{
 				ImageIndex = 2,
-				StartRotation = 0f,
-				SolvedRotation = 0f,
+				StartRotation = 90f,
+				SolvedRotation = 90f,
 				IsEndTile = false,
 				IsStartTile = true
 			};
