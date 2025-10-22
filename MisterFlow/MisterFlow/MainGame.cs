@@ -25,7 +25,8 @@ namespace MisterFlow
 		int _width = 0;
 		int _height = 0;
 
-		private GridManager _gridManager;
+		private LevelManager _levelManager;
+        private GridManager _gridManager;
 
 		public MainGame()
 		{
@@ -60,7 +61,8 @@ namespace MisterFlow
 
 			Level level = CreateLevel();
 
-			_gridManager = new GridManager(level);
+			_levelManager = new LevelManager();
+            _gridManager = new GridManager(level);
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -70,7 +72,8 @@ namespace MisterFlow
 
 			InputManager.Update(_renderDestination, _scale);
 
-			_gridManager.Update(gameTime);
+			_levelManager.Update(gameTime);
+            _gridManager.Update(gameTime);
 
 			base.Update(gameTime);
 		}
@@ -85,10 +88,11 @@ namespace MisterFlow
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+			
+            _gridManager.Draw(_spriteBatch);
+            _levelManager.Draw(_spriteBatch);
 
-			_gridManager.Draw(_spriteBatch);
-
-			_spriteBatch.End();
+            _spriteBatch.End();
 
 			GraphicsDevice.SetRenderTarget(null);
 

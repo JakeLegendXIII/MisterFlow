@@ -5,6 +5,9 @@ namespace MisterFlow.Entities;
 
 internal class LevelManager : IGameEntity
 {
+
+
+
     public void Draw(SpriteBatch spriteBatch)
     {
         
