@@ -27,7 +27,6 @@ namespace MisterFlow
 
 		private LevelManager _levelManager;
 
-
 		public MainGame()
 		{
 			_graphics = new GraphicsDeviceManager(this);
