@@ -77,34 +77,45 @@ internal class GridManager : IGameEntity
 
 	private Rectangle CalculateDrawBox(Point gridPosition)
 	{
-		// Check if this is the first square (top-left corner)
-		if (gridPosition.X == 0 && gridPosition.Y == 0)
+		foreach(var tile in _level.Tiles)
 		{
-			// Third image in sequence (index 2)
-			return new Rectangle(_cellSize * 2, 0, _cellSize, _cellSize);
+			if(tile.GridPosition == gridPosition)
+			{
+				int index = tile.ImageIndex;
+				return new Rectangle(_cellSize * index, 0, _cellSize, _cellSize);
+			}
 		}
-		// Check if this is the last square (bottom-right corner)
-		else if (gridPosition.X == _gridWidth - 1 && gridPosition.Y == _gridHeight - 1)
-		{
-			// Third image in sequence (index 2)
-			return new Rectangle(_cellSize * 2, 0, _cellSize, _cellSize);
-		}
-		else
-		{
-			// Randomly choose between second (index 1) or fourth (index 3) image
-			int tile = _random.Next(1, 3); // Returns 1 or 2
 
-			if (tile == 1)
-			{
-				// Second image in sequence (index 1)
-				return new Rectangle(_cellSize, 0, _cellSize, _cellSize);
-			}
-			else // tile == 2
-			{
-				// Fourth image in sequence (index 3)
-				return new Rectangle(_cellSize * 3, 0, _cellSize, _cellSize);
-			}
-		}
+		return new Rectangle(0, 0, _cellSize, _cellSize);
+
+		//// Check if this is the first square (top-left corner)
+		//if (gridPosition.X == 0 && gridPosition.Y == 0)
+		//{
+		//	// Third image in sequence (index 2)
+		//	return new Rectangle(_cellSize * 2, 0, _cellSize, _cellSize);
+		//}
+		//// Check if this is the last square (bottom-right corner)
+		//else if (gridPosition.X == _gridWidth - 1 && gridPosition.Y == _gridHeight - 1)
+		//{
+		//	// Third image in sequence (index 2)
+		//	return new Rectangle(_cellSize * 2, 0, _cellSize, _cellSize);
+		//}
+		//else
+		//{
+		//	// Randomly choose between second (index 1) or fourth (index 3) image
+		//	int tile = _random.Next(1, 3); // Returns 1 or 2
+
+		//	if (tile == 1)
+		//	{
+		//		// Second image in sequence (index 1)
+		//		return new Rectangle(_cellSize, 0, _cellSize, _cellSize);
+		//	}
+		//	else // tile == 2
+		//	{
+		//		// Fourth image in sequence (index 3)
+		//		return new Rectangle(_cellSize * 3, 0, _cellSize, _cellSize);
+		//	}
+		//}
 	}
 
 	private bool IsEnd(Point gridPosition)
