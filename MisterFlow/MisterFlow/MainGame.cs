@@ -153,7 +153,7 @@ namespace MisterFlow
 			// Row 2
 			TileData tile5 = new TileData
 			{
-				ImageIndex = 3,
+				ImageIndex = 1,
 				StartRotation = 0f,
 				SolvedRotation = 270f,
 				IsEndTile = false,
@@ -175,7 +175,7 @@ namespace MisterFlow
 
 			TileData tile7 = new TileData
 			{
-				ImageIndex = 3,
+				ImageIndex = 1,
 				StartRotation = 180f,
 				SolvedRotation = 90f,
 				IsEndTile = false,
@@ -199,7 +199,7 @@ namespace MisterFlow
 			TileData tile9 = new TileData
 			{
 				ImageIndex = 1,
-				StartRotation = 0f,
+				StartRotation = 90f,
 				SolvedRotation = 270f,
 				IsEndTile = false,
 				IsStartTile = false,
