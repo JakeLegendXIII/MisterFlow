@@ -50,7 +50,7 @@ internal class LevelManager : IGameEntity
         {
             ImageIndex = 3,
             StartRotation = 90f,
-            SolvedRotation = 0f,
+            SolvedRotation = 90f,
             IsEndTile = false,
             IsStartTile = false,
             GridPosition = new Point(0, 1)
